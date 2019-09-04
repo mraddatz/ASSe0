@@ -78,16 +78,7 @@
     {% endfor %}
         <input type="submit" value="OK">
     </form>
-    <h1>
-            A continuacion escribe algo y veras 3 noticias relacionadas
-        </h1>
-    <form action={% url 'news' %} method="post">
-        {% csrf_token %}
-        news:<br>
-        <input type="text" name="title" value="">
-        <br>
-        <input type="submit" value="Submit">
-      </form> 
+
       
 
 
