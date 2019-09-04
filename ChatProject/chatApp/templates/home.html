@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.6/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.6/semantic.min.js"></script>
+    <title>Chat App</title>
+</head>
+<body>
+ 
+ 
+
+
+
+    
+    <table class="ui celled padded table">
+    <thead>
+      <tr>
+      <th>Alias</th>
+      <th>text</th>
+      <th>Date</th>
+    </tr></thead>
+    <tbody>
+        {% if messages %}
+        {% for message in messages %}
+      <tr>
+
+        <td class="single line">
+                <li>{{ message.alias }}</li>
+        </td>
+        <td class="single line">
+                <li>{{ message.text }}</li>
+        </td>
+        <td class="single line">
+                <li>{{ message.pub_date }}</li>
+        </td>
+      </tr>
+      {% endfor %}
+      {% endif %}
+    </tbody>
+    <tfoot>
+      <tr><th colspan="5">
+        <div class="ui right floated pagination menu">
+          {% for i in pages %}
+          {% if i == page %}
+          <a class="item" href="{% url 'home' i %}"  style="background-color: aqua">{{ i }}</a>
+          {% else %}
+          <a class="item" href="{% url 'home' i %}">{{ i }}</a>
+          {% endif %}
+          {% endfor %}
+
+        </div>
+      </th>
+    </tr></tfoot>
+  </table>
+
+
+
+
+
+    <h1>
+        A continuacion escribe tu mensaje y alias
+    </h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="field {% if field.errors %}error{% endif %}">
+          {{ field.label_tag }}
+          {{ field }}
+          {% if field.errors %}
+            <div class="ui red pointing label">
+              {{ field.errors.0 }}
+            </div>
+          {% endif %}
+        </div>
+    {% endfor %}
+        <input type="submit" value="OK">
+    </form>
+    <h1>
+            A continuacion escribe algo y veras 3 noticias relacionadas
+        </h1>
+    <form action={% url 'news' %} method="post">
+        {% csrf_token %}
+        news:<br>
+        <input type="text" name="title" value="">
+        <br>
+        <input type="submit" value="Submit">
+      </form> 
+      
+
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.6/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.6/semantic.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        News View
+    </h1>
+    <form method="post" href="{% url 'home' 1 %}">
+            {% csrf_token %}
+            <button type="submit">HOME</button>
+        </form>
+    <div class="eleven wide column">
+            <h1 class="ui center aligned header">News</h1>
+            <div class="ui three cards">
+            {% if news %}
+              {% for news_article in news %}
+              <a class="ui card" href="{{ news_article.url }}" style="color: inherit">
+                    <div class="content" style="text-align:center;">
+                      {{ news_article.title }}
+                    </div>
+                    <div class="image" style="margin: auto;">
+                      <img src="{{ news_article.urlToImage }}">
+                    </div>
+                    <div class="content" style="font-size:12px;">
+                      {{ news_article.description }}
+                    </div>
+                    <div class="extra content">
+                      <b>{{ news_article.source }}</b>
+                    </div>
+                  </a>
+                  
+              {% empty %}
+                <p> No hay noticias</p>
+              {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+
+
+
+</body>
+</html>
