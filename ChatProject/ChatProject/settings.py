@@ -25,7 +25,7 @@ SECRET_KEY = 'qs4ar^6#6yvzp#==)3lfk)&s(v)v@+^^%=sg_9$g_f_+#=qmcz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.raddatze0.tk', 'raddatze0.tk','3.16.101.97']
 
 
 # Application definition
@@ -76,11 +76,12 @@ WSGI_APPLICATION = 'ChatProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'chat_db',
-        'USER': '',
+        'USER': 'chatappuser',
+	'PASSWORD': 'password',
         'HOST': 'localhost',
-        'PORT': 5432,
+        'PORT': '',
     }
 }
 
@@ -122,3 +123,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+

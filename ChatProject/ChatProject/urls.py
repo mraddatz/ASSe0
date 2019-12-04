@@ -23,8 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.index, name='home'),
     url(r'^(?P<page>\d+)/$', views.index, name='home'),
-<<<<<<< HEAD
-=======
     url(r'^news/$', views.news, name='news'),
->>>>>>> master
 ]
