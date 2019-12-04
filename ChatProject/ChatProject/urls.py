@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^$', views.index, name='home'),
     url(r'^(?P<page>\d+)/$', views.index, name='home'),
     url(r'^news/$', views.news, name='news'),
+
 ]
